@@ -196,22 +196,40 @@ body, p, span, div {
   background-color: #EB6C59;
 }
 
+.back_to_roadmap {
+  display: block;
+  text-decoration: none;
+  margin-bottom: 15px;
+  margin-left: 30px;
+
+  i, span {
+    color: white;
+    text-shadow: 0px 1px 2px #BA5444;
+  }
+}
+
 .entire_quiz_container, .entire_roadmap_container, .entire_content_container {
   h1 {
     font-size: 2.0em;
     color: white;
     display: inline-block;
     text-shadow: 0px 1px 2px #BA5444;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    margin-left: 30px;
   }
 
   .subtitle {
     color: white;
+    font-style: italic;
+    margin-left: 10px;
+    text-shadow: 0px 1px 2px #BA5444;
   }
 }
 
 .inner_quiz_container, .inner_roadmap_container, .inner_content_container {
   border-radius: 8px;
+  box-shadow: 0px 1px 2px #BA5444;
 }
 
 // quiz
@@ -326,6 +344,8 @@ body, p, span, div {
   padding-top: 30px;
   padding-bottom: 30px;
   color: white;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 
   h2 {
     font-size: 1.2em;
