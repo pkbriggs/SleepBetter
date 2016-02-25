@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  .homepage
+    .promo_container
+      .promo_image
+        .promo_text_container
+          h1.container.promo_text.serif_text Sleep Better. Live Better.
+
+    .container
+      .homepage_step
+        .step_info
+          h2.serif_text Take the Sleep Quiz
+          p.
+            How much do you already know about sleep? Take our sleep quiz to help us create a personalized list of topics for you to learn about, so you can skip straight to the things you care about!
+        //- .icon_container.pencil_icon.responsive_image
+        img(src="img/pencil_icon.png").pencil_icon
+
+    .homepage_step.step2
+      img(src="img/map.png").map_image
+      .step_info
+        h2.serif_text View Your Roadmap
+        p.
+          After taking the quiz, we create a personalized list of topics for you - your roadmap. These topics vary in subject from basic sleep knowledge and dream-related facts to strategies on how you can improve your sleep quality.
+      //- img(src="img/triangle.png")
+
+    .container
+      .homepage_step
+        .step_info
+          h2.serif_text Begin Your Journey
+          p.
+            Once you have taken the quiz and perused your roadmap, you can start reading about any topic that piques your interest. We hope you enjoy your journey learning more about sleep!
+        img(src="img/rocket_icon.png").rocket_icon
+
+      hr
+
+      .homepage_call_to_action
+        .homepage_cta_large_text.serif_text
+          | Ready to begin your own sleep journey?
+        .homepage_cta_subtext
+          | Start by taking the sleep quiz!
+        a.button.salmon_button(href="/quiz.html")
+          | Get started&nbsp;
+          i.fa.fa-angle-right

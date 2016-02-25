@@ -2,6 +2,11 @@ var gulp = require('gulp');
 var webserver = require('gulp-webserver');
 var sass = require('gulp-sass');
 var ghPages = require('gulp-gh-pages');
+var jade = require('gulp-jade');
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant'); // $ npm i -D imagemin-pngquant
+var autoprefixer = require('gulp-autoprefixer');
+var cache = require('gulp-cache');
 
 gulp.task('webserver', function() {
   gulp.src('dist')
@@ -12,20 +17,35 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('sass', function () {
-  return gulp.src('./*.scss')
+  return gulp.src('./css/style.scss')
     .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions']
+    }))
     .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('copy-index-html', function() {
-    gulp.src('./index.html')
-    // Perform minification tasks, etc here
-    .pipe(gulp.dest('./dist'));
+gulp.task('jade', function() {
+  return gulp.src('./views/**/*.jade')
+    .pipe(jade()) // pip to jade plugin
+    .pipe(gulp.dest('./dist')); // tell gulp our output folder
+});
+
+gulp.task('imagemin', function() {
+  return gulp.src('./img/*')
+    .pipe(imagemin({
+    // .pipe(cache(imagemin({
+      progressive: true,
+      use: [pngquant()]
+    }))
+    // })))
+    .pipe(gulp.dest('./dist/img'));
 });
 
 gulp.task('watch', function () {
-  gulp.watch('./*.scss', ['sass']);
-  gulp.watch('./index.html', ['copy-index-html']);
+  gulp.watch('./css/*.scss', ['sass']);
+  gulp.watch('./views/**/*.jade', ['jade']);
+  gulp.watch('./img/*', ['imagemin']);
 });
 
 gulp.task('deploy', ['build'], function() {
@@ -33,7 +53,7 @@ gulp.task('deploy', ['build'], function() {
     .pipe(ghPages());
 });
 
-gulp.task('build', ['sass', 'copy-index-html']);
+gulp.task('build', ['sass', 'jade', 'imagemin']);
 
 gulp.task('default', ['build', 'webserver', 'watch']);
 

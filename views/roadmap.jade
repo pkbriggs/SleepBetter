@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  .roadmap_page
+    .entire_roadmap_container
+        h1.serif_text Your Roadmap
+        span.subtitle learning progress report
+
+        .inner_roadmap_container
+          .map_progress_container
+            img(src="img/roadmap_0.png").roadmap_image
+
+          .roadmap_stops_container
+            h2.header.serif_text Stop List
+            hr
+            .stop_list
+              .stop.current_stop
+                .stop_name Basics
+                .stop_description (0/4 topics completed)
+              .stop
+                .stop_name Essentials
+                .stop_description (0/4 topics completed)
+              .stop
+                .stop_name Dreaming
+                .stop_description (0/4 topics completed)
+              .stop
+                .stop_name Sleep Disorders
+                .stop_description (0/4 topics completed)
+              .stop
+                .stop_name Wrap-up
+                .stop_description (0/4 topics completed)
+

@@ -1,0 +1,49 @@
+extends layout
+
+block content
+  .quiz_page
+    .entire_quiz_container
+      h1.serif_text Sleep Quiz
+      span.subtitle let's test your skills!
+
+      .inner_quiz_container
+        .quiz_question.serif_text
+          | During which part of sleep do people dream?
+
+        hr
+
+        //- each response in ["REM Sleep", "Non-REM Sleep", "Deep Sleep", "Polygraphic Sleep"]
+
+        .response_choice
+          input(type='radio', name='answer', value='REM Sleep')
+          span.response_text REM Sleep
+
+        .response_choice
+          input(type='radio', name='answer', value='REM Sleep')
+          span.response_text Non-REM Sleep
+
+        .response_choice
+          input(type='radio', name='answer', value='REM Sleep')
+          span.response_text Deep Sleep
+
+        .response_choice
+          input(type='radio', name='answer', value='REM Sleep')
+          span.response_text Polygraphic Sleep
+
+        .quiz_button_container
+          .button.purple_button.small_button
+            | Next
+
+        //- input(type='radio', name='answer', value='response')
+        //-   | Non-REM Sleep
+
+        //- input(type='radio', name='answer', value='response')
+        //-   | Deep Sleep
+
+        //- input(type='radio', name='answer', value='response')
+        //-   | Polygraphic Sleep
+
+      .quiz_progress_bar
+        .bar
+        .text
+          | 10% complete
