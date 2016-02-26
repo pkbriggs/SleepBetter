@@ -7,6 +7,7 @@ var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant'); // $ npm i -D imagemin-pngquant
 var autoprefixer = require('gulp-autoprefixer');
 var cache = require('gulp-cache');
+var coffee = require('gulp-coffee');
 
 gulp.task('webserver', function() {
   gulp.src('dist')
@@ -31,6 +32,19 @@ gulp.task('jade', function() {
     .pipe(gulp.dest('./dist')); // tell gulp our output folder
 });
 
+gulp.task('coffee', function() {
+  gulp.src('./coffee/*.coffee')
+    .pipe(coffee({bare: true}))
+    .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('copy-lib', function() {
+  gulp.src('./lib/js/*.js')
+    .pipe(gulp.dest('./dist'));
+  gulp.src('./lib/css/*.css')
+    .pipe(gulp.dest('./dist'));
+});
+
 gulp.task('imagemin', function() {
   return gulp.src('./img/*')
     .pipe(imagemin({
@@ -46,6 +60,7 @@ gulp.task('watch', function () {
   gulp.watch('./css/*.scss', ['sass']);
   gulp.watch('./views/**/*.jade', ['jade']);
   gulp.watch('./img/*', ['imagemin']);
+  gulp.watch('./coffee/*', ['coffee']);
 });
 
 gulp.task('deploy', ['build'], function() {
@@ -53,7 +68,7 @@ gulp.task('deploy', ['build'], function() {
     .pipe(ghPages());
 });
 
-gulp.task('build', ['sass', 'jade', 'imagemin']);
+gulp.task('build', ['sass', 'jade', 'imagemin', 'coffee', 'copy-lib']);
 
 gulp.task('default', ['build', 'webserver', 'watch']);
 

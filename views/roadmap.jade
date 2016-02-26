@@ -1,5 +1,9 @@
 extends layout
 
+block head
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
+  script(src="../roadmap.js", type="text/javascript")
+
 block content
   .roadmap_page
     .entire_roadmap_container
@@ -8,7 +12,8 @@ block content
 
         .inner_roadmap_container
           .map_progress_container
-            img(src="img/roadmap_0.png").roadmap_image
+            a.floating_button(href="basics/importance.html")
+            img(src="img/roadmap_empty.png").roadmap_image
 
           .roadmap_stops_container
             h2.header.serif_text Stop List
@@ -25,8 +30,5 @@ block content
                 .stop_description (0/4 topics completed)
               .stop
                 .stop_name Sleep Disorders
-                .stop_description (0/4 topics completed)
-              .stop
-                .stop_name Wrap-up
                 .stop_description (0/4 topics completed)
 
