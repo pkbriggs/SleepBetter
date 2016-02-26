@@ -2,6 +2,8 @@ extends layout
 
 block head
   script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
+  script(src='../sweetalert.min.js')
+  link(rel='stylesheet', type='text/css', href='../sweetalert.css')
   script(src="../roadmap.js", type="text/javascript")
 
 block content
@@ -12,23 +14,37 @@ block content
 
         .inner_roadmap_container
           .map_progress_container
-            a.floating_button(href="basics/importance.html")
+            a.floating_button
             img(src="img/roadmap_empty.png").roadmap_image
 
           .roadmap_stops_container
             h2.header.serif_text Stop List
             hr
             .stop_list
-              .stop.current_stop
+              .stop.stop0_container
                 .stop_name Basics
-                .stop_description (0/4 topics completed)
-              .stop
+                .stop_description
+                  span (
+                  span.basics_topics_completed 0
+                  span /3 topics completed)
+              .stop.stop1_container
                 .stop_name Essentials
-                .stop_description (0/4 topics completed)
-              .stop
+                .stop_description
+                  span (
+                  span.essentials_topics_completed 0
+                  span /4 topics completed)
+              .stop.stop2_container
                 .stop_name Dreaming
-                .stop_description (0/4 topics completed)
-              .stop
+                .stop_description
+                  span (
+                  span.dreaming_topics_completed 0
+                  span /2 topics completed)
+              .stop.stop3_container
                 .stop_name Sleep Disorders
-                .stop_description (0/4 topics completed)
+                .stop_description
+                  span (
+                  span.disorders_topics_completed 0
+                  span /3 topics completed)
+
+  .reset_progress_button reset progress
 
